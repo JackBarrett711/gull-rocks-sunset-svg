@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .cloud {
+        animation: cloudanimationFrames linear 15s;
+        animation-iteration-count: infinite;
+
+        transform-origin: 100% 100%;
+      }
+
+      @keyframes cloudanimationFrames {
+        0% {
+          transform: translateX(-110px);
+        }
+        100% {
+          transform: translateX(90%);
+        }
+      }
+
+      .sun {
+        animation: sunanimationFrames linear 30s;
+        animation-iteration-count: infinite;
+        transform-origin: 100% 100%;
+      }
+
+      @keyframes sunanimationFrames {
+        0% {
+          transform: scaleX(1) scaleY(1);
+        }
+        50% {
+          transform: scaleX(0.4) scaleY(0.4);
+        }
+      }
+      .gullrocks {
+        font-size: 1rem;
+        font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+        fill: #fff;
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6,
+          0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+        animation: glow 1s ease-in-out infinite alternate;
+      }
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6,
+            0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6,
+            0 0 35px #0073e6;
+        }
+        to {
+          text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0073e6,
+            0 0 40px #0073e6, 0 0 50px #0073e6, 0 0 60px #0073e6,
+            0 0 70px #0073e6;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <svg
+        width="100%"
+        height="100vh"
+        viewbox="0 0 250 50"
+        preserveAspectRatio="xMidYMid meet"
+        transform="translate(0,-100)"
+      >
+        <!-- height="auto" didn't work, and I'm not sure why? So I set it to 1200px, but on smaller screens there is a gap above the SVG and on larger screens it disappears completely  -->
+        <defs>
+          <linearGradient id="Gradient1">
+            <stop class="stop1" offset="50%" />
+            <stop class="stop2" offset="100%" />
+          </linearGradient>
+          <style type="text/css">
+            #rect1 {
+              fill: url(#Gradient1);
+            }
+            .stop1 {
+              stop-color: rgb(0, 114, 207);
+            }
+            .stop2 {
+              stop-color: rgb(255, 94, 0);
+            }
+          </style>
+          <linearGradient id="Gradient2">
+            <stop class="stop3" offset="30%" />
+            <stop class="stop4" offset="100%" />
+          </linearGradient>
+          <style type="text/css">
+            #rect2 {
+              fill: url(#Gradient2);
+            }
+            .stop3 {
+              stop-color: rgb(0, 55, 100);
+            }
+            .stop4 {
+              stop-color: rgb(128, 47, 0);
+            }
+          </style>
+        </defs>
+
+        <g>
+          <rect id="rect1" x="0" y="-50" width="250" height="83.5" />
+        </g>
+
+        <g class="cloud">
+          <circle cx="70" cy="-20" r="7" fill="white" />
+          <circle cx="75" cy="-25" r="6" fill="white" />
+          <circle cx="80" cy="-20" r="8" fill="white" />
+          <circle cx="60" cy="-20" r="6" fill="white" />
+          <circle cx="53" cy="-20" r="3" fill="white" />
+          <circle cx="88" cy="-20" r="4" fill="white" />
+          <circle cx="85" cy="-20" r="7" fill="white" />
+          <circle cx="92" cy="-20" r="6" fill="white" />
+          <circle cx="98" cy="-20" r="4" fill="white" />
+        </g>
+
+        <g>
+          <circle
+            class="sun"
+            cx="240"
+            cy="20"
+            r="20"
+            fill="red"
+            stroke="orange"
+            stroke-width="1"
+          />
+        </g>
+
+        <g>
+          <rect id="rect2" x="0" y="33.5" width="250" height="55" />
+        </g>
+        <g>
+          <rect x="0" y="65" width="250" height="25" fill="#c2b280" />
+        </g>
+
+        <g transform="translate(0,200) scale(0.1,-0.1)">
+          <path
+            d="M850 2000 c-18 -15 -56 -35 -84 -44 -27 -9 -58 -26 -68 -37 -17 -17 -54 -36 -82 -42 -5 -1 -28 -13 -50 -27 -22 -15 -60 -36 -85 -49 -51 -26 -73 -52 -80 -95 -4 -24 -10 -30 -30 -30 -28 0 -53 -13 -46 -23 4 -7 429 -9 1291 -4 528 3 530 3 505 22 -14 11 -34 29 -45 40 -25 24 -35 25 -35 5 0 -12 -4 -13 -19 -5 -26 13 -31 13 -31 -5 0 -8 -4 -15 -9 -15 -14 0 -26 22 -23 42 3 18 -38 63 -67 73 -10 3 -29 20 -41 38 -13 18 -35 42 -51 55 -24 19 -32 21 -50 12 -12 -7 -33 -10 -47 -7 -14 3 -38 0 -55 -5 -24 -9 -36 -7 -70 12 -23 13 -44 26 -47 30 -3 3 -25 16 -50 28 -51 25 -56 22 -85 -48 -25 -60 -33 -70 -59 -70 -19 0 -27 -13 -50 -80 -26 -73 -46 -102 -46 -65 0 8 -5 15 -11 15 -5 0 -17 16 -25 36 -27 65 -67 115 -119 150 -29 19 -57 34 -63 34 -5 0 -22 14 -36 30 -14 17 -43 37 -64 44 -36 13 -39 13 -73 -15z 0z"
+            fill="#5a4d41"
+            stroke="black"
+            stroke-width="5"
+          />
+        </g>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 60 60"
+          x="-75px"
+          y="57px"
+        >
+          <defs>
+            <path
+              fill="#000000"
+              id="i-468"
+              d="M31.767,31h1.647l13.311-13.291C47.56,16.879,48,15.941,48,15c0-1.654-1.346-3-3-3c-1.375,0-2.575,1.16-2.707,1.293 L36.586,19H23.63l-7,6H3c-1.654,0-3,1.346-3,3c0,1.408,0.979,2.586,2.29,2.906L0.434,34H0v2h48v-2H33.566L31.767,31z M24.37,21 h10.216l-4,4H19.703L24.37,21z M2,28c0-0.551,0.449-1,1-1h28.414l12.29-12.289C43.995,14.424,44.608,14,45,14c0.552,0,1,0.449,1,1 c0,0.393-0.243,0.852-0.688,1.293L32.586,29H3C2.449,29,2,28.553,2,28z M2.766,34l1.801-3h24.867l1.8,3H2.766z"
+            />
+          </defs>
+
+          <use x="0" y="0" xlink:href="#i-468" />
+        </svg>
+        <svg
+          transform="scale(0.1,0.1)"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          version="1.1"
+          id="Capa_1"
+          x="-70px"
+          y="37px"
+          viewBox="0 0 512.001 512.001"
+          style="enable-background: new 0 0 512.001 512.001"
+          xml:space="preserve"
+        >
+          <g>
+            <path
+              style="fill: #abffdb"
+              d="M256.001,23.532c-103.948,0-195.378,44.648-248.5,112.226h248.5V23.532z"
+            />
+            <path
+              style="fill: #abffdb"
+              d="M256.001,23.532c103.948,0,195.378,44.648,248.5,112.226h-248.5V23.532z"
+            />
+          </g>
+          <path
+            style="fill: #ffc850"
+            d="M151.791,135.758l9.985,24.963c3.652,9.13,12.495,15.117,22.329,15.117h143.791  c9.834,0,18.677-5.987,22.329-15.117l9.985-24.963H151.791z"
+          />
+          <g>
+            <path
+              style="fill: #92e0c0"
+              d="M360.211,135.758l9.985,24.963c3.652,9.13,12.495,15.117,22.329,15.117h79.662   c9.834,0,18.677-5.987,22.329-15.117l9.985-24.963H360.211z"
+            />
+            <path
+              style="fill: #92e0c0"
+              d="M151.791,135.758l-9.985,24.964c-3.652,9.13-12.495,15.117-22.328,15.117H39.815   c-9.833,0-18.676-5.987-22.328-15.117l-9.986-24.964"
+            />
+          </g>
+          <path
+            style="fill: #ffffff"
+            d="M256.001,23.532c-43.591,0-81.933,44.648-104.21,112.226h208.42  C337.934,68.181,299.592,23.532,256.001,23.532z"
+          />
+          <path
+            style="fill: #ffc850"
+            d="M256.001,472.435c-33.337,0-61.62,13.396-72.145,32.065h144.29  C317.621,485.832,289.338,472.435,256.001,472.435z"
+          />
+          <path
+            style="fill: #fea82f"
+            d="M278.879,474.695c-0.033-0.007-0.069-0.032-0.102-0.04c-7.2-1.413-14.83-2.22-22.776-2.22  c-33.337,0-61.62,13.396-72.145,32.065h43.309C234.409,490.468,253.823,479.264,278.879,474.695z"
+          />
+          <path
+            style="fill: #000000"
+            d="M510.397,131.123C455.13,60.816,363.263,18.157,263.501,16.117V7.5c0-4.142-3.358-7.5-7.5-7.5  s-7.5,3.358-7.5,7.5v8.617C148.739,18.157,56.872,60.816,1.604,131.123c-1.662,2.115-2.039,4.941-1.049,7.414l-0.018,0.007  l9.985,24.964c4.819,12.047,16.317,19.832,29.292,19.832h79.663c12.975,0,24.473-7.785,29.292-19.832l3.022-7.555l3.022,7.555  c4.818,12.047,16.316,19.832,29.292,19.832h64.396v281.816c-30.227,1.714-56.211,13.719-68.778,31.845h-19.915  c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5,7.5,7.5h192.387c4.142,0,7.5-3.358,7.5-7.5s-3.358-7.5-7.5-7.5H332.28  c-12.567-18.125-38.551-30.131-68.778-31.845V183.339h64.396c12.976,0,24.473-7.785,29.292-19.832l3.022-7.555l3.022,7.555  c4.819,12.047,16.316,19.832,29.292,19.832h79.663c12.975,0,24.473-7.784,29.292-19.832l9.985-24.963l-0.018-0.007  C512.436,136.064,512.06,133.238,510.397,131.123z M311.949,497H200.053c12.798-10.529,33.405-17.065,55.948-17.065  S299.15,486.471,311.949,497z M140.714,143.258l-5.872,14.679c-2.513,6.283-8.598,10.402-15.365,10.402H39.815  c-6.806,0-12.837-4.083-15.365-10.402l-8.782-21.77l7.909-7.909c44.637-49.932,109.919-83.136,182.537-93.641l49.887-3.585  l49.923,3.589c72.603,10.51,137.871,43.712,182.501,93.636l7.951,8.117l-8.824,21.561c-2.528,6.319-8.559,10.403-15.365,10.403  h-79.663c-6.767,0-12.852-4.12-15.365-10.402l-5.871-14.679l-2.355-3.085c-4.392-5.752-13.052-5.752-17.445,0l-2.355,3.085  l-5.871,14.678c-2.513,6.283-8.598,10.403-15.365,10.403H184.105c-6.767,0-12.852-4.12-15.365-10.403l-5.871-14.678l-1.304-2.031  c-4.571-7.12-14.977-7.12-19.547,0L140.714,143.258z"
+          />
+        </svg>
+        <g>
+          <text x="70" y="28" class="gullrocks">Gull</text>
+          <text x="140" y="28" class="gullrocks">Rocks</text>
+        </g>
+      </svg>
+    </div>
+  </body>
+</html>
